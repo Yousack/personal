@@ -18,7 +18,7 @@
       (setq inhibit-startup-screen t)
       (set-face-attribute 'default nil
                           :family "Inconsolata"
-                          :height 160)
+                          :height 180)
       (set-fontset-font
        nil 'japanese-jisx0208
        (font-spec :family "Hiragino Kaku Gothic ProN"))
@@ -31,7 +31,8 @@
 (require 'ox-latex)
 (setq org-latex-packages-alist
       '(("yu-osx" "luatexja-preset")
-        ("" "bm")))
+        ("" "bm")
+        ("" "authblk")))
 (setq org-latex-classes
       '(("ltjsarticle"
          "\\documentclass{ltjsarticle}"
@@ -44,7 +45,16 @@
          "\\documentclass[presentation]{beamer}"
          ("\\section{%s}" . "\\section*{%s}")
          ("\\subsection{%s}" . "\\subsection*{%s}")
-         ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+        ("ltjbook"
+         "\\documentclass{ltjbook}"
+         ("\\part{%s}" . "\\part{%s}")
+         ("\\chapter{%s}" . "\\chapter{%s}")
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+         ("\\paragraph{%s}" . "\\paragraph*{%s}")
+         ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 (setq org-latex-pdf-process '("lualatex %b" "lualatex %b"))
 (setq org-latex-default-class "ltjsarticle")
 
