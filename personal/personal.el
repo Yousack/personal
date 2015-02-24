@@ -4,6 +4,7 @@
 
 ;;; Code:
 
+(server-start)
 (mac-translate-from-yen-to-backslash)
 (global-linum-mode)
 (electric-indent-mode -1)
@@ -11,6 +12,8 @@
 (load-theme 'atom-dark)
 (setq default-input-method "japanese-mozc")
 (defvar mozc-helper-program-name "/usr/local/bin/mozc_emacs_helper")
+(require 'mozc-popup)
+(setq mozc-candidate-style 'popup)
 
 (if window-system
     (progn
@@ -30,8 +33,7 @@
 (require 'org)
 (require 'ox-latex)
 (setq org-latex-packages-alist
-      '(("yu-osx" "luatexja-preset")
-        ("" "bm")
+      '(("" "bm")
         ("" "authblk")))
 (setq org-latex-classes
       '(("ltjsarticle"
