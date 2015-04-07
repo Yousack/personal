@@ -9,7 +9,7 @@
 (global-linum-mode)
 (electric-indent-mode -1)
 (disable-theme 'zenburn)
-(load-theme 'atom-dark)
+(load-theme 'material)
 (setq default-input-method "japanese-mozc")
 (defvar mozc-helper-program-name "/usr/local/bin/mozc_emacs_helper")
 (require 'mozc-popup)
@@ -30,11 +30,19 @@
       (set-frame-parameter nil 'alpha 90)
 ))
 
+;; Ruby
+(add-hook 'ruby-mode-hook 'robe-mode)
+(push 'company-robe company-backends)
+
 (require 'org)
 (require 'ox-latex)
 (setq org-latex-packages-alist
-      '(("" "bm")
-        ("" "authblk")))
+      '(
+        ("" "bm")
+        ("" "authblk")
+        ("" "url")
+        ("yu-osx" "luatexja-preset")
+        ))
 (setq org-latex-classes
       '(("ltjsarticle"
          "\\documentclass{ltjsarticle}"
@@ -43,8 +51,16 @@
          ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
          ("\\paragraph{%s}" . "\\paragraph*{%s}")
          ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+        ("ltjsarticle_two"
+         "\\documentclass[twocolumn]{ltjsarticle}"
+         ("\\section{%s}" . "\\section*{%s}")
+         ("\\subsection{%s}" . "\\subsection*{%s}")
+         ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+         ("\\paragraph{%s}" . "\\paragraph*{%s}")
+         ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
         ("beamer"
-         "\\documentclass[presentation]{beamer}"
+         "\\documentclass[presentation]{beamer}
+\\usefonttheme{professionalfonts}"
          ("\\section{%s}" . "\\section*{%s}")
          ("\\subsection{%s}" . "\\subsection*{%s}")
          ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
